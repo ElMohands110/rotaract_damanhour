@@ -1,0 +1,627 @@
+/* ==================== GOOGLE FONTS ==================== */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;900&family=Roboto:wght@300;400&display=swap');
+
+/* ==================== VARIABLES CSS ==================== */
+:root {
+    --header-height:3rem ;
+
+    /*========== Colors ==========*/
+    --logo-color: #db2e62;
+    --first-color: #656262;
+    --second-color:  #f4e51e;
+    --gradient-color: linear-gradient(-38deg, var(--logo-color),var(--second-color));
+    --gradient-color-reverse: linear-gradient(130deg, var(--logo-color), var(--second-color));
+    --body-color: #fff;
+    --footer-color: #000;
+
+    /*========== Font and typography ==========*/
+
+    /* .5rem = 8px, 1rem = 16px, 1.5rem = 24px 11... */
+    --big-font-size:2rem ;
+    --h1-font-size: 3rem;
+    --h2-font-size:1.5rem ;
+    --h3-font-size: 1.125rem;
+    --normal-font-size: .987rem ;
+    --small-font-size: .813rem;
+    --smaller-font-size: .75rem;
+    --btn-font-size: 1.1rem;
+
+    /*========== Font weight ==========*/
+    --font-medium: 400;
+    --font-semi-bold: 600;
+    --font-bold: 700;
+
+    /*========== Margines Bottom ==========*/
+    /* .25rem = 4px, .5rem = 8px, .75rem = 12px ... */
+    --m-0-25: .25rem;
+    --m-0-5: .5rem;
+    --m-0-75: .75rem;
+    --m-1: 1rem;
+    --m-1-5: 1.5rem;
+    --m-2: 2rem;
+    --m-2-5: 2.5rem;
+    --m-3: 3rem;
+    --container-padding: 2rem;
+
+    /*========== z index ==========*/
+    --z-tooltip: 10;
+    --z-fixed: 100;
+    --z-modal: 1000;
+}
+
+/* Variable For large devices */
+@media screen and (min-width: 968px) {
+    :root {
+        --big-font-size: 2rem;
+        --h1-font-size: 3.5rem;
+        --h2-font-size: 2rem;
+        --h3-font-size: 1.25rem;
+        --normal-font-size:1.1rem ;
+        --small-font-size: .875rem;
+        --smaller-font-size: .875rem;
+
+        --container-padding: 4rem;
+    }
+}
+
+/*==================== BASE ====================*/
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+html{
+    scroll-behavior: smooth;
+}
+body{
+    margin: 0;
+    padding: 0;
+    font-size: var(--normal-font-size);
+    background-color: var(--body-color);
+    color: var(--text-color-dark);
+    font-family: "Poppins", sans-serif;
+    overflow-x: hidden;
+}
+h1,h2,h3,h4{
+    font-weight: var(--font-semi-bold);
+}
+ul{
+    list-style: none;
+    display: inline-block;
+}
+a{
+    text-decoration: none;
+}
+button,i {
+    cursor: pointer;
+}
+.btn_up {
+    background: var(--second-color);
+    color: var(--logo-color);
+    padding: 5px 15px;
+    font-size: 30px;
+    border-radius: 50%;
+    position: fixed;
+    bottom: 3rem;
+    right: 3rem;
+    z-index: var(--z-tooltip);
+}
+.btn_up a {
+    color: var(--text-color-light);
+}
+
+/*==================== REUSABLE CSS CLASSES ====================*/
+.container {
+    padding: var(--container-padding);
+}
+
+.grid{
+    display: grid;
+    gap: 1rem;
+}
+.btn {
+    border: none;
+    color: var(--first-color);
+    font-size: var(--normal-font-size);
+    font-weight: 700;
+}
+.hidden {
+    display: none;
+    transition: all .5s;
+}
+.blur {
+    filter: blur(8px);
+}
+
+/*==================== LAYOUT ====================*/
+
+/* ========== Pub Up Of Donation ========== */
+.pub_up {
+    position: fixed;
+    top: 0;
+    left: 0;
+    background: var(--body-color);
+    z-index: var(--z-fixed);
+    text-align: center;
+    margin: 4rem 30vw;
+    padding: 1rem 2rem;
+    border: solid 2px #222;
+    box-shadow: 0 3px 4px var(--first-color);
+}
+.pub_up h2 {
+    font-size: var(--h2-font-size);
+}
+.close_pub {
+    position: absolute;
+    top: 1rem ;
+    right: 2.5rem;
+    font-size: var(--h3-font-size);
+    border-radius: 50%;
+    border: solid 2px var(--first-color);
+    padding: 10px 13px;
+}
+.main_pub_up {
+    grid-template-columns: repeat(2,1fr);
+    margin-top: 2rem;
+}
+.main_pub_up article {
+    padding: 4rem 0;
+}
+.main_pub_up article p {
+    font-size: var(--big-font-size);
+}
+.main_pub_up img {
+    width: 200px;
+    height: 200px;
+}
+
+@media screen and (max-width: 968px) {
+    .pub_up {
+        margin: 4rem 10vw;
+    }
+}
+
+/* ========== NAV ========== */
+nav {
+    background: transparent;
+    position: absolute;
+    color: var(--text-color-light);
+    z-index: 100;
+    padding: 2rem 3rem;
+    width: 100%;
+    transition: .5s;
+}
+.nav_logo {
+    position: absolute;
+    top: 1.5rem;
+    left: 5rem;
+    color: var(--logo-color);
+    cursor: default;
+}
+.nav_menu {
+    width: 100%;
+    text-align: center;
+    transition: .7s;
+}
+.nav_item {
+    width: auto;
+    display: inline-block;
+    margin-right: 3rem;
+}
+.nav_link {
+    color: var(--first-color);
+    position: relative;
+}
+.nav_link:hover {
+    color: #000;
+}
+.open_nav {
+    font-size: 30px;
+    position: absolute;
+    top: 1.5rem;
+    right: 2rem;
+    cursor: pointer;
+    display: none;
+}
+.close_nav {
+    display: none;
+    font-size: var(--h3-font-size);
+    margin: 20px 5px;
+    margin-bottom: 0;
+    cursor: pointer;
+}
+.nav_fixed {
+    position: fixed;
+    top: 0;
+    left: 0;
+    background: var(--second-color);
+    padding: 2rem 2rem;
+}
+
+/* Nav for phone */
+@media screen and (max-width: 968px) {
+    
+    .nav_logo {
+        top: 1.3rem;
+        left: 2rem;
+    }
+    .open_nav {
+        display: block;
+    }
+    .nav_menu {
+        background: var(--second-color);
+        z-index: var(--z-tooltip);
+        position: fixed;
+        top: 0;
+        right: -100%;
+        padding: 0 1rem;
+        padding-right: 7rem;
+        width: auto;
+        height: 100%;
+        text-align: left;
+    }
+    .nav_item {
+        display: block;
+        margin-right: 0;
+        margin-bottom: 1rem;
+    }
+    .close_nav {
+        display: block;
+        font-size: var(--h3-font-size);
+        margin: 20px 5px;
+        margin-bottom: 2rem;
+        cursor: pointer;
+    }
+    .nav_fixed {
+        padding-bottom: 3rem !important;
+    }
+    .nav_fixed .open_nav {
+        right: 2rem;
+    }
+    
+}
+
+/*==================== Home Page ====================*/
+.yellow_square {
+    position: absolute;
+    top: 15rem;
+    width: 400px;
+    height: 200px;
+    background: var(--second-color);
+    box-shadow: 2px 4px 6px #656262;
+}
+header {
+    width: 100%;
+    text-align: center;
+    padding-top: 15rem;
+    padding-bottom: 2rem;
+    border-left: solid 4px #ffee01;
+    border-bottom: solid 4px #ffee01;
+    overflow-y: hidden;
+}
+.address h1 {
+    font-size: var(--h1-font-size);
+    color: var(--logo-color);
+}
+.address h2 {
+    font-size: var(--h3-font-size);
+    color: var(--first-color);
+}
+header .address p {
+    padding: 2rem 35%;
+    font-size: var(--small-font-size);
+}
+.donate_btn {
+    padding: 1.5rem 4rem;
+    border-radius: 40px;
+    margin: 2rem 0;
+    font-size: var(--h2-font-size);
+    background: var(--second-color);
+}
+.head_side_icon {
+    position: absolute;
+    top: 0;
+    right: 4rem;
+    height: 100%;
+    padding-top: 20%;
+}
+.head_side_icon i {
+    display: block;
+    margin-bottom: 2rem;
+    font-size: var(--h2-font-size);
+    margin-right: 5px;
+}
+.fa-facebook-f {
+    color: #2f22e4;
+}
+.fa-twitter {
+    color: #0faeec;
+}
+.fa-instagram {
+    color: #d422e4;
+}
+.head_side_icon .line {
+    width: 5px;
+    height: 40%;
+    background: var(--second-color);
+    position: absolute;
+    right: 18px;
+} 
+.head_side_icon .line1 {
+    top: 0;
+}
+.head_side_icon .line2 {
+    height: 34%;
+    bottom: -1.8rem;
+}
+
+/* === Header For Mini Devices === */
+@media screen and (max-width: 968px) {
+    .yellow_square {
+        z-index: -1;
+        height: 150px;
+        width: 50px;
+        top: 10.5rem;
+    }
+    header {
+        padding-top: 12rem;
+    }
+    header .address p {
+        padding: 2rem 5%;
+    }
+    .head_side_icon {
+        position: relative;
+        left: 2%;
+        padding-top: 0;
+    }
+    .head_side_icon i {
+        display: inline-block;
+        margin-bottom: 0;
+        margin-right: 2rem;
+    }
+    .head_side_icon .line {
+        width: 30%;
+        height: 5px;
+        top: .7rem;
+    } 
+    .head_side_icon .line1 {
+        left: -1rem;
+    }
+    .head_side_icon .line2 {
+        right: 1rem;
+    }
+}
+
+/*==================== Main ====================*/
+.main {
+    padding: 2rem 3rem;
+    border-left: solid 4px #ffee01;
+    border-bottom: solid 4px #ffee01;
+}
+.main .boxs {
+    grid-template-columns: repeat(3, 1fr);
+}
+.single_box {
+    margin-bottom: 2rem;
+}
+.single_box img {
+    width: 100%;
+}
+.more_btn {
+    background: var(--first-color);
+    color: #fff;
+    padding: 1rem 3rem;
+    margin-top: 4rem;
+}
+@media screen and (max-width: 968px) {
+    
+    .main .boxs {
+        grid-template-columns: repeat(1, 1fr);
+    }
+}
+
+/*==================== Donate ====================*/
+.donate {
+    width: 100%;
+    grid-template-columns: 8fr 3fr;
+    box-shadow: 0 3px 4px #656262;
+    padding: 3rem 4rem;
+}
+.donate .donate_btn {
+    padding: 1rem 0 !important;
+    margin: 0;
+    font-size: var(--h2-font-size);
+}
+.donate h1 {
+    font-size: var(--big-font-size);
+    margin-top: 1rem;
+}
+
+@media screen and (max-width: 968px) {
+    
+    .donate {
+        grid-template-columns: repeat(1, 1fr);
+    }
+    .donate h1 {
+        margin-bottom: 2rem;
+    }
+    .donate .donate_btn {
+        margin: 0 15%;
+    }
+}
+
+/*==================== About Us ====================*/
+.about {
+    padding: 7rem 25vw;
+    padding-bottom: 0;
+
+}
+.about_box {
+    padding: 2rem;
+    text-align: center;
+    border: solid 2px var(--first-color);
+}
+.about_box h2 {
+    font-size: var(--big-font-size);
+    margin-bottom: 2rem;
+}
+.main_about p {
+    margin-top: 2rem;
+}
+.main_about img {
+    width: 200px;
+    height: 200px;
+}
+.main_about {
+    grid-template-columns: repeat(2,1fr);
+}
+
+/* Section For Phone */
+@media screen and (max-width: 968px) {
+    
+    .about {
+        padding: 7rem 10vw;
+    }
+    .main_about p {
+        margin-top: 0;
+    }
+    .main_about img {
+        width: 150px;
+        height: 150px;
+    }
+}
+
+/*==================== Contact Us ====================*/
+.contact {
+    padding: 7rem 25vw;
+    padding-bottom: 0;
+    color: var(--first-color);
+}
+.contact_box {
+    padding: 2rem;
+    text-align: left;
+    border: solid 2px var(--first-color);
+}
+.contact_box .head {
+    font-size: var(--h2-font-size);
+    margin-bottom: 2rem;
+}
+.header_contact {
+    grid-template-columns: repeat(2,1fr);
+}
+.single_contact {
+    margin-bottom: 2rem;
+}
+.single_contact i {
+    margin-right: 10px;
+}
+.main_contact {
+    grid-template-areas: 'name name name email email email'
+                         'message message message message message message'
+                         'send send send send send send';
+}
+.main_contact input {
+    height: 40px;
+    padding: 10px;
+}
+.input1 {
+    grid-area: name;
+}
+.input2 {
+    grid-area: email;
+}
+.input3 {
+    grid-area: message;
+    height: 80px !important;
+    padding: -4px 10px !important;
+}
+.submit_btn {
+    grid-area: send;
+    margin: 0 30%;
+    background: var(--second-color);
+    border-radius: 20px;
+}
+
+/* Section For Phone */
+@media screen and (max-width: 968px) {
+    
+    .contact {
+        padding: 7rem 10vw;
+    }
+    .header_contact {
+        grid-template-columns: repeat(1,1fr);
+        margin-bottom: 1rem;
+    }
+    .single_contact:last-of-type {
+        margin-bottom: 0;
+    }
+    .main_contact {
+        grid-template-areas: 'name'
+                             'email'
+                            'message'
+                            'send';
+    }
+}
+
+/*==================== FOOTER ====================*/
+footer {
+    margin-top: 3rem;
+    text-align: center;
+}
+.footer_icons {
+    width: 100%;
+    margin-top: 1rem;
+    position: relative;
+}
+.footer_icons i {
+    margin-right: 1rem;
+    font-size: var(--h2-font-size);
+    border-radius: 50%;
+    border: solid 2px var(--first-color);
+    padding: 6px;
+}
+.footer_icons .fa-facebook-f {
+    padding: 6px 12px;
+}
+.footer_icons .fa-instagram {
+    padding: 6px 8px;
+}
+.fa-envelope {
+    color: var(--first-color);
+}
+
+/* Copy Right */
+.cpy_right {
+    color: var(--first-color);
+    width: 100%;
+    padding: 10px;
+    padding-top: 30px;
+    text-align: center;
+}
+footer .line {
+    width: 40%;
+    height: 4px;
+    background: var(--second-color);
+    position: absolute;
+    top: 18px;
+}
+footer .line1 {
+    left: -1rem;
+}
+footer .line2 {
+    right: 0;
+}
+
+/* Section For Phone */
+@media screen and (max-width: 968px){
+
+    footer .line {
+        width: 30%;
+    }
+    footer .line1{
+        left: -2rem;
+    }
+    footer .line2 {
+        right: -1rem;
+    }
+}
